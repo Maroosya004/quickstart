@@ -1,4 +1,4 @@
-package by.andersenlab.quickstart.config;
+package by.andersenlab.quickstart.lesson10.config;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

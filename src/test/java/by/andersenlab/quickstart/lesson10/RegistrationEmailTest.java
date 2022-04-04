@@ -1,7 +1,7 @@
-package by.andersenlab.quickstart;
+package by.andersenlab.quickstart.lesson10;
 
-import by.andersenlab.quickstart.config.SeleniumConfig;
-import by.andersenlab.quickstart.config.WebDriverWrapper;
+import by.andersenlab.quickstart.lesson10.config.SeleniumConfig;
+import by.andersenlab.quickstart.lesson10.config.WebDriverWrapper;
 import org.junit.*;
 import org.openqa.selenium.By;
 

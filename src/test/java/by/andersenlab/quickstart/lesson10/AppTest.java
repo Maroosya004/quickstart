@@ -1,4 +1,4 @@
-package by.andersenlab.quickstart;
+package by.andersenlab.quickstart.lesson10;
 
 import static org.junit.Assert.assertTrue;
 
