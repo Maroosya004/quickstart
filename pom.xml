@@ -20,9 +20,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.8.1</version>
       <scope>test</scope>
     </dependency>
 
@@ -37,6 +37,13 @@
       <artifactId>webdrivermanager</artifactId>
       <version>5.1.0</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-report-plugin</artifactId>
+      <version>2.22.2</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -84,4 +91,16 @@
       </plugins>
     </pluginManagement>
   </build>
+
+<!-- Don't forget to use [mvn site] -->
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.22.2</version>
+      </plugin>
+    </plugins>
+  </reporting>
+
 </project>
