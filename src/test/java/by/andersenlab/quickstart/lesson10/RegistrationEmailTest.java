@@ -2,7 +2,7 @@ package by.andersenlab.quickstart.lesson10;
 
 import by.andersenlab.quickstart.lesson10.config.SeleniumConfig;
 import by.andersenlab.quickstart.lesson10.config.WebDriverWrapper;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 
 import java.util.HashSet;
@@ -14,7 +14,7 @@ public class RegistrationEmailTest {
     private static WebDriverWrapper driver;
     private static final Set<String> possibleErrors = new HashSet<>();
 
-    @BeforeClass
+    @BeforeAll
     public static void setup() {
         driver = new SeleniumConfig().getDriver();
         possibleErrors.add("Необходимо заполнить «E-mail».");
@@ -22,7 +22,7 @@ public class RegistrationEmailTest {
         possibleErrors.add("Использование одновременно русских и латинских символов недопустимо");
     }
 
-    @Before
+    @BeforeEach
     public void openPage() {
         driver.open("https://diary.ru/user/registration");
     }
@@ -30,21 +30,21 @@ public class RegistrationEmailTest {
     @Test
     public void given_emptyEmail_when_registration_showsError() {
         driver.click(By.id("signup_btn"));
-        Assert.assertTrue(hasEmailError());
+        Assertions.assertTrue(hasEmailError());
     }
 
     @Test
     public void given_incorrectEmail_when_registration_showsError() {
         driver.write(By.id("signupform-email"), "hoho@ho");
         driver.click(By.id("signup_btn"));
-        Assert.assertTrue(hasEmailError());
+        Assertions.assertTrue(hasEmailError());
     }
 
     @Test
     public void given_correctEmail_when_registration_NoError() {
         driver.write(By.id("signupform-email"), "hoho@ho.ho");
         driver.click(By.id("signup_btn"));
-        Assert.assertFalse(hasEmailError());
+        Assertions.assertFalse(hasEmailError());
     }
 
     private boolean hasEmailError() {
@@ -58,7 +58,7 @@ public class RegistrationEmailTest {
         return false;
     }
 
-    @AfterClass
+    @AfterAll
     public static void shutdown() {
         driver.quit();
     }
