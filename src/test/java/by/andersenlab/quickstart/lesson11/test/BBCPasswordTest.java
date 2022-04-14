@@ -6,22 +6,18 @@ import by.andersenlab.quickstart.lesson11.form.BBCAuthorizationForm;
 import by.andersenlab.quickstart.lesson11.form.BBCBirthDateForm;
 import by.andersenlab.quickstart.lesson11.form.BBCRegistrationForm;
 import by.andersenlab.quickstart.lesson11.page.BBCHomePage;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.openqa.selenium.By;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class BBCPasswordTest {
 
     private static final HashMap<String, String> possibleErrors = new HashMap<>();
 
-    @BeforeClass
+    @BeforeAll
     public static void setPossibleErrors() {
         possibleErrors.put("short password", "Извините, этот пароль слишком короткий. В нём должно быть не менее 8 символов.");
         possibleErrors.put("no letters", "Извините, этот пароль недействителен. Пожалуйста, включите одну букву.");
@@ -50,21 +46,21 @@ public class BBCPasswordTest {
         registrationForm.fillEmailField("makhnetsova.m@gmail.com");
         registrationForm.fillPasswordField("123456");
         registrationForm.pressCountryBtn();
-        Assert.assertEquals(possibleErrors.get("short password"), registrationForm.getPasswordError());
+        Assertions.assertEquals(possibleErrors.get("short password"), registrationForm.getPasswordError());
         registrationForm.clearPasswordField();
 
         registrationForm.fillPasswordField("12345678");
         registrationForm.pressCountryBtn();
-        Assert.assertEquals(possibleErrors.get("no letters"), registrationForm.getPasswordError());
+        Assertions.assertEquals(possibleErrors.get("no letters"), registrationForm.getPasswordError());
         registrationForm.clearPasswordField();
 
         registrationForm.fillPasswordField("francophone");
         registrationForm.pressCountryBtn();
-        Assert.assertEquals(possibleErrors.get("no numbers"), registrationForm.getPasswordError());
+        Assertions.assertEquals(possibleErrors.get("no numbers"), registrationForm.getPasswordError());
         registrationForm.clearPasswordField();
     }
 
-    @AfterClass
+    @AfterAll
     public static void shutdown() {
         DriverSingleton.closeDriver();
     }

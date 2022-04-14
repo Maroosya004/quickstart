@@ -4,9 +4,9 @@ import by.andersenlab.quickstart.lesson11.DriverSingleton;
 import by.andersenlab.quickstart.lesson11.form.BBCAuthorizationForm;
 import by.andersenlab.quickstart.lesson11.page.AccountHomePage;
 import by.andersenlab.quickstart.lesson11.page.BBCHomePage;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class AuthorizationTest {
 
@@ -22,10 +22,10 @@ public class AuthorizationTest {
         authorizationPage.pressEnterBtn();
 
         AccountHomePage accountHomePage = new AccountHomePage();
-        Assert.assertEquals("https://www.bbc.com/", accountHomePage.getPageUrl());
+        Assertions.assertEquals("https://www.bbc.com/", accountHomePage.getPageUrl());
     }
 
-    @AfterClass
+    @AfterAll
     public static void shutdown() {
         DriverSingleton.closeDriver();
     }
