@@ -29,6 +29,7 @@ public class BBCAuthorizationForm extends AbstractPage {
     public void pressEnterBtn() {
         clickElement(enterBtn);
     }
+
     public void pressRegistrationBtn() {
         clickElement(registrationBtn);
     }
