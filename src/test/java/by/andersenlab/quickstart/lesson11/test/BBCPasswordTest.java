@@ -6,16 +6,17 @@ import by.andersenlab.quickstart.lesson11.form.BBCAuthorizationForm;
 import by.andersenlab.quickstart.lesson11.form.BBCBirthDateForm;
 import by.andersenlab.quickstart.lesson11.form.BBCRegistrationForm;
 import by.andersenlab.quickstart.lesson11.page.BBCHomePage;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import by.andersenlab.quickstart.lesson15.BrowserLogs;
+import org.junit.jupiter.api.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 
 public class BBCPasswordTest {
 
     private static final HashMap<String, String> possibleErrors = new HashMap<>();
+    private static final Logger logger = LoggerFactory.getLogger(BBCPasswordTest.class);
 
     @BeforeAll
     public static void setPossibleErrors() {
@@ -58,6 +59,11 @@ public class BBCPasswordTest {
         registrationForm.pressCountryBtn();
         Assertions.assertEquals(possibleErrors.get("no numbers"), registrationForm.getPasswordError());
         registrationForm.clearPasswordField();
+    }
+
+    @AfterEach
+    public void tearDown() {
+        BrowserLogs.printLogs(logger);
     }
 
     @AfterAll

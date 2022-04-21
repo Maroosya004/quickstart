@@ -4,9 +4,14 @@ import by.andersenlab.quickstart.lesson11.DriverSingleton;
 import by.andersenlab.quickstart.lesson13.page.AndersenHomePage;
 import by.andersenlab.quickstart.lesson13.page.JoinSkypePage;
 import by.andersenlab.quickstart.lesson13.page.JoinWhatsAppPage;
+import by.andersenlab.quickstart.lesson15.BrowserLogs;
 import org.junit.jupiter.api.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SocialMediaButtonsTest {
+
+    private static final Logger logger = LoggerFactory.getLogger(SocialMediaButtonsTest.class);
 
     private final AndersenHomePage andersenHomePage = new AndersenHomePage();
 
@@ -34,7 +39,8 @@ public class SocialMediaButtonsTest {
     }
 
     @AfterEach
-    public void reset() {
+    public void tearDown() {
+        BrowserLogs.printLogs(logger);
         DriverSingleton.resetTabs();
     }
 
